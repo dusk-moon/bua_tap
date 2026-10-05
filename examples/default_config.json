@@ -1,0 +1,13 @@
+{
+  "branching_factor": 3,
+  "width": 2,
+  "depth": 3,
+  "attacker_model": "grok-4.6",
+  "evaluator_model": "grok-4.6",
+  "attacker_temperature": null,
+  "evaluator_temperature": null,
+  "attacker_max_tokens": 4096,
+  "evaluator_max_tokens": 4096,
+  "timeout_seconds": 120.0,
+  "max_retries": 3
+}

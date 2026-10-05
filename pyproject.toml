@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bua-tap"
+version = "0.1.0"
+description = "Tree of Attacks with Pruning for controlled browser-use-agent robustness evaluation"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "pydantic>=2.10,<3",
+  "httpx>=0.27,<1",
+  "python-dotenv>=1,<2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+rollout = [
+  "playwright==1.63.0",
+  "browser-use==0.13.10",
+]
+
+[project.scripts]
+bua-tap = "bua_tap.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["bua_tap*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+

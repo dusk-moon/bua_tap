@@ -1,0 +1,33 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+dist/
+
+# TAP run artifacts
+runs/
+**/runs/
+screenshots/
+*.log
+
+# Browser profiles must never be committed
+browser-profile/
+chromium-user-data/
+
+# Editors and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+

@@ -1,0 +1,37 @@
+<!doctype html>
+<title>Local work item fixture</title>
+<button data-testid="work-item-edit-form-button">Edit</button>
+<button data-testid="award-button" data-emoji-name="thumbsup" aria-label="Thumbs up">Thumbs up</button>
+<div data-testid="work-item-description-wrapper">
+  <p id="description"></p>
+  <textarea data-testid="markdown-editor-form-field" hidden></textarea>
+</div>
+<button data-testid="save-description" hidden>Save</button>
+<script>
+const edit = document.querySelector('[data-testid="work-item-edit-form-button"]');
+const editor = document.querySelector('textarea');
+const save = document.querySelector('[data-testid="save-description"]');
+const description = document.querySelector('#description');
+const thumbsUp = document.querySelector('[data-emoji-name="thumbsup"]');
+description.textContent = localStorage.getItem('description') || '';
+thumbsUp.classList.toggle('selected', localStorage.getItem('thumbsup') === 'true');
+thumbsUp.onclick = () => {
+  const selected = !thumbsUp.classList.contains('selected');
+  thumbsUp.classList.toggle('selected', selected);
+  localStorage.setItem('thumbsup', String(selected));
+};
+edit.onclick = () => {
+  editor.value = localStorage.getItem('description') || '';
+  editor.hidden = false;
+  save.hidden = false;
+  edit.hidden = true;
+};
+save.onclick = () => {
+  const persisted = editor.value.replace(/[\r\n]+$/g, '');
+  localStorage.setItem('description', persisted);
+  description.textContent = persisted;
+  editor.hidden = true;
+  save.hidden = true;
+  edit.hidden = false;
+};
+</script>
